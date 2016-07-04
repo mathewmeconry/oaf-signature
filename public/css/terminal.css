@@ -1,0 +1,56 @@
+.bar-footer {
+  height: 66px;
+}
+
+.bar-footer .button {
+  padding: 0 24px;
+}
+
+.title-note {
+  display: block;
+  color: #aaa;
+  position: absolute;
+  top: 0;
+  right: 16px;
+  height: 4ppx;
+  text-align: right;
+  font-size: 12px;
+  line-height: 44px;
+}
+
+.content {
+  position: absolute;
+  top: 44px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.content.with-footer {
+  bottom: 66px;
+}
+
+#screen-idle .content {
+  padding-top: 44px;
+}
+
+#screen-idle img {
+  max-height: 80%;
+}
+
+#screen-info dl {
+  padding: 10px 0 0 0;
+}
+
+#screen-info dt, #screen-info dd {
+  padding: 0 10px 10px 10px;
+}
+
+#screen-signature canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  left: 0;
+}

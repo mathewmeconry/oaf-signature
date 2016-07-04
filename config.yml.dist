@@ -1,0 +1,4 @@
+api:
+    base_uri: 'http://www.zentrium.local/api/'
+    client_id: 'yourclientid'
+    client_secret: 'yourclientsecret'

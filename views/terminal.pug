@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='viewport', content='initial-scale = 1.0, user-scalable = no')
+    title OAF16 Zeiterfassung
+    link(rel='stylesheet', href='/css/ionic.min.css')
+    link(rel='stylesheet', href='/css/terminal.css')
+  body
+    .screen#screen-idle
+      .bar.bar-header.bar-light
+        h1.title OAF16 Zeiterfassung
+        p.title-note.terminal-id
+      .content
+        img(src='/images/idle.png')
+    .screen#screen-info
+      .bar.bar-header.bar-light
+        h1.title OAF16 Zeiterfassung
+      .bar.bar-footer.bar-light
+        button.button.button-stable.action-cancel Abbrechen
+        button.button.button-balanced.action-signature Unterschreiben
+      .content.with-footer
+        dl
+          dt Name
+          dd#info-user
+          dt Zeit
+          dd#info-time
+          dt Bemerkungen
+          dd#info-notes
+    .screen#screen-signature
+      .bar.bar-header.bar-light
+        h1.title OAF16 Zeiterfassung
+      .bar.bar-footer.bar-light
+        button.button.button-stable.action-cancel Abbrechen
+        button.button.button-stable.action-reset Reset
+        button.button.button-balanced.action-submit Bestätigen
+      .content.with-footer
+        canvas
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/jquery.min.js')
+    script(src='/js/terminal.js')
