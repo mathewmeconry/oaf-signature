@@ -12,13 +12,25 @@ $(function () {
   var gestureStart;
 
   var $canvas = $('#screen-signature').find('canvas');
-  var canvas = $canvas.get(0);
-  canvas.width = $canvas.parent().width();
-  canvas.height = $canvas.parent().height();
-  var canvasOffset = $canvas.offset();
+  var canvas;
+  var canvasOffset;
+
+  function setupCanvas($canvas) {
+    console.log('setupCanvas()');
+    canvas = $canvas.get(0);
+    canvas.width = $canvas.parent().width();
+    canvas.height = $canvas.parent().height();
+    canvasOffset = $canvas.offset();
+  }
+  setupCanvas($canvas);
+
   var canvasContext = canvas.getContext('2d');
   canvasContext.strokeStyle = '#000';
   canvasContext.lineWidth = 3;
+
+  window.addEventListener('resize', function () {
+    setupCanvas($canvas);
+  });
 
   canvas.addEventListener('touchstart', function(e) {
     if(gesture.length) {
