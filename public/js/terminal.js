@@ -98,5 +98,8 @@ $(function () {
 
   $screens.hide();
   $screenIdle.show();
-  socket.emit('register', $('body').data('registration'));
+
+  socket.on('connect', function () {
+    socket.emit('register', $('body').data('registration'));
+  });
 });
