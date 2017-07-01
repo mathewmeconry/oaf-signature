@@ -1,3 +1,4 @@
+title: 'OAF17 Zeiterfassung'
 api:
     base_uri: 'http://www.zentrium.local/api/'
     client_id: 'yourclientid'

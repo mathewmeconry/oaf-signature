@@ -17,6 +17,7 @@ require('mkdirp').sync(signatureDir);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
+app.set('title', config.title);
 app.use(express.static(__dirname + '/public'));
 
 server.listen(9000);
