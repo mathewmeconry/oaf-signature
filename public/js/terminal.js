@@ -98,5 +98,5 @@ $(function () {
 
   $screens.hide();
   $screenIdle.show();
-  socket.emit('register');
+  socket.emit('register', $('body').data('registration'));
 });

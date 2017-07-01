@@ -23,9 +23,9 @@ $(function () {
       var label = '#' + entry.id + ' ' + entry.user + ' (' + entry.time + ')';
       $entry.find('span').text(label);
       $entry.data('id', data.entries[i].id);
-      for(var j in data.terminals) {
+      for(var id in data.terminals) {
         var $terminal = $('<li><a class="send"></a></li>');
-        $terminal.find('a').data('id', data.terminals[j]).text(data.terminals[j]);
+        $terminal.find('a').data('id', id).text(data.terminals[id].label);
         $entry.find('ul').append($terminal);
       }
       $list.append($entry);

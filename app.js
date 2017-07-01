@@ -6,7 +6,7 @@ var yaml = require('js-yaml');
 var fs = require('fs');
 var request = require('request');
 var _ = require('lodash');
-var moniker = require('moniker');
+var crypto = require('crypto');
 var async = require('async');
 var moment = require('moment');
 
@@ -30,7 +30,7 @@ var users = [];
 var activities = [];
 
 var database = {
-  terminals: [],
+  terminals: {},
   entries: [],
 };
 
@@ -129,7 +129,11 @@ app.get('/control', function (req, res) {
 });
 
 app.get('/terminal', function (req, res) {
-  res.render('terminal', {});
+  res.render('terminal', {
+    registration: {
+      label: req.query.label || null,
+    },
+  });
 });
 
 io.on('connection', function (socket) {
@@ -188,17 +192,19 @@ io.on('connection', function (socket) {
 
   socket.on('register', function (data) {
     if (!terminalId) {
-      terminalId = moniker.choose();
-      database.terminals.push(terminalId);
+      terminalId = crypto.randomBytes(4).toString('hex');
+      database.terminals[terminalId] = {
+        label: (data || {}).label || terminalId,
+      };
       notifyClients();
     }
     terminalSockets[terminalId] = socket;
-    socket.emit('registered', { 'id': terminalId });
+    socket.emit('registered', { id: terminalId });
   });
 
   socket.on('disconnect', function () {
     if(terminalId) {
-      _.pull(database.terminals, terminalId);
+      delete database.terminals[terminalId];
       delete terminalSockets[terminalId];
       terminalId = null;
       notifyClients();

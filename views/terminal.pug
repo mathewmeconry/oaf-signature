@@ -6,7 +6,7 @@ html
     title= settings.title
     link(rel='stylesheet', href='/css/ionic.min.css')
     link(rel='stylesheet', href='/css/terminal.css')
-  body
+  body(data-registration=JSON.stringify(registration))
     .screen#screen-idle
       .bar.bar-header.bar-light
         h1.title= settings.title
