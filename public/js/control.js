@@ -32,5 +32,7 @@ $(function () {
     }
   });
 
-  socket.emit('fetch');
+  socket.on('connect', function () {
+    socket.emit('fetch');
+  });
 });
