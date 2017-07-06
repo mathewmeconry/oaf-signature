@@ -117,7 +117,8 @@ function notifyClients() {
 }
 
 app.get('/', function (req, res) {
-  if(req.get('user-agent').indexOf('iPhone') >= 0) {
+  const userAgent = req.get('user-agent');
+  if(userAgent.includes('iPhone') || userAgent.includes('Android')) {
     res.redirect('/terminal');
   } else {
     res.redirect('/control');
